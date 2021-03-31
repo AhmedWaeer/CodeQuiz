@@ -1,0 +1,105 @@
+    .Quiz-body {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: center;
+        padding: 250px;
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+    
+    h1 {
+        max-width: 600px;
+        margin: auto;
+    }
+    
+    p {
+        max-width: 600px;
+        margin: auto;
+        margin-top: 20px;
+    }
+    
+    .start-button {
+        margin-top: 20px;
+        background-color: rgb(49, 10, 85);
+        color: cornsilk;
+        font-weight: bold;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    li button {
+        background-color: rgb(49, 10, 85);
+        color: cornsilk;
+        font-weight: bold;
+        width: -webkit-fill-available;
+        margin: 6px;
+        padding: 5px;
+    }
+    
+    .answers {
+        max-width: 580px;
+        align-self: center;
+    }
+    
+    #feedback {
+        color: darkgray;
+        font-family: cursive;
+        position: relative;
+        text-decoration: overline darkgray;
+    }
+    
+    .Quiz-body input {
+        max-width: 600px;
+        margin: auto;
+        padding: 3px;
+    }
+    
+    #submit-button {
+        width: 179px;
+        margin: 14px;
+        padding: 6px;
+        background-color: rgb(49, 10, 85);
+        align-self: center;
+        border-radius: 7px;
+        color: cornsilk;
+        font-weight: bold;
+    }
+    
+    a {
+        text-decoration: auto;
+        font-family: ui-monospace;
+        font-weight: 600;
+        color: rgb(49, 10, 85);
+    }
+    
+    .timer {
+        font-family: ui-monospace;
+        font-weight: 600;
+        color: rgb(49, 10, 85);
+    }
+    
+    .score-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: center;
+        padding: 250px;
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+    
+    .scorelist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
