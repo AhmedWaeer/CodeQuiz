@@ -1,12 +1,10 @@
 let startButton = document.querySelector(".start-button");
-let title = document.querySelector("h1");
 let answers = document.querySelector(".answers");
 let quizBody = document.querySelector(".Quiz-body")
 let ul = document.createElement("ul");
 let counter = document.querySelector(".count");
 let result = document.querySelector("#feedback");
 let playerInfo = document.createElement("div");
-let submitPlayer = document.querySelector("#submit-button");
 let clearscore = document.querySelector(".clear-score");
 let scoreSheet = document.querySelector("#Highscore");
 let time = 40;
@@ -14,22 +12,25 @@ let count = 0;
 let score = 0;
 let endQuiz = false;
 let participants = JSON.parse(localStorage.getItem("scoresheet")) || [];
+function setTitle(title) {
+    document.querySelector(".js-title").textContent = title
+}
 
 
 function startTimer() {
 
-    let timer = setInterval(function() {
+    let timer = setInterval(function () {
 
-            if (time <= 0 || endQuiz) {
-                counter.textContent = 0;
-                clearInterval(timer);
-                checkScore();
-                addToScoreSheet();
-                return
-            }
-            counter.textContent = time;
-            time--;
-        },
+        if (time <= 0 || endQuiz) {
+            counter.textContent = 0;
+            clearInterval(timer);
+            checkScore();
+            addToScoreSheet();
+            return
+        }
+        counter.textContent = time;
+        time--;
+    },
         1000);
 
 }
@@ -62,7 +63,7 @@ function checkScore() {
     answers.innerHTML = "";
     ul.innerHTML = "";
     finalScore = localStorage.getItem("score");
-    title.textContent = " your final Score is " + finalScore;
+    setTitle(" your final Score is " + finalScore);
 }
 
 
@@ -70,18 +71,23 @@ function renderQuestionAndAnswer(i) {
     answers.innerHTML = "";
     ul.innerHTML = "";
     var selectedQuestion = Questions[i];
-    title.textContent = selectedQuestion.question;
+    setTitle(selectedQuestion.question);
     var choiselist = selectedQuestion.choices;
     for (var index = 0; index < choiselist.length; index++) {
-        let li = document.createElement("li");
-        button = document.createElement("button");
-        li.setAttribute("data-index", index);
-        button.textContent = choiselist[index];
-        answers.appendChild(ul);
-        ul.appendChild(li);
-        li.appendChild(button);
-
+        // let li = document.createElement("li");
+        // li.setAttribute("data-index", index);
+        // button = document.createElement("button");
+        // button.textContent = choiselist[index];
+        // li.appendChild(button);
+        // answers.appendChild(ul);
+        // ul.appendChild(li);
+        //<button>${choiselist[index].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')}</button>
+        let li = `<li data-index="${index}">
+            <button>${choiselist[index]}</button>
+        </li>`
+        ul.insertAdjacentHTML('beforeend', li);
     }
+    answers.appendChild(ul)
 }
 
 function renderResult(message) {
@@ -94,7 +100,7 @@ function renderResult(message) {
 }
 
 function addToScoreSheet() {
-    //template litterals 
+    //template litterals
     answers = "";
     let input = document.createElement("input");
     let submitButton = document.createElement("button");
@@ -139,40 +145,30 @@ ul.addEventListener("click", (event) => {
 
 quizBody.addEventListener("click", (e) => {
     e.preventDefault();
-    var element = e.target.textContent;
     //why not .match ??  ex . js-className
-    if (element === "Add to Score Sheet") {
+    if (e.target.matches("#submit-button")) {
         var name = document.querySelector("#name").value;
         localStorage.setItem("name", name);
-        var player = {
-            name: localStorage.getItem("name"),
+        participants.push({
+            name,//same as `name: name`
             score: localStorage.getItem("score")
-        }
-
-
-        var records = document.createElement("ul");
-        participants.push(player);
-        // to be disscused 
+        });
+        // to be disscused
         localStorage.setItem("scoresheet", JSON.stringify(participants));
-        for (var x = 0; x < participants.length; x++) {
-            var playerRecord = document.createElement("li");
-            playerRecord.textContent = participants[x].name + participants[x].score;
-            records.appendChild(playerRecord);
-        }
-        quizBody.textContent = "";
-        let title = document.
-        createElement("h1");
-        title.textContent = "Score Sheet";
-        quizBody.appendChild(title);
-        quizBody.appendChild(records);
+        showScoresheet()
     }
-
 });
 
+function showScoresheet() {
+    var records = document.createElement("ul");
+    for (var x = 0; x < participants.length; x++) {
+        var playerRecord = document.createElement("li");
+        playerRecord.innerHTML = `${participants[x].name} <strong>${participants[x].score}</strong>`;
+        records.appendChild(playerRecord);
+    }
+    setTitle("Score Sheet");
+    quizBody.textContent = "";
+    quizBody.appendChild(records);
+}
 
-
-
-
-
-
-//clearscore.addEventListener();
+document.querySelector('.js-showscore').addEventListener('click', showScoresheet)
