@@ -5,30 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
     <link rel="stylesheet" href="./style.css">
     <title>Javascript Quiz Game</title>
 </head>
 <header>
-    <div>
-        <a class="js-showscore" href="#">View Highscores</a>
-    </div>
-    <div class="timer ">Time:
-        <span class="count "> </span>
-    </div>
 </header>
 
 <body>
-    <h1 class="js-title">Javascript Quiz Challenge</h1>
+    <div class="container mx-auto max-w-5xl" id="quiz-page">
+    <div class="flex justify-between mt-20 mx-auto">
+        <a class="text-purple-700 font-bold font-serif" href="./scoresheet.html">View Highscores</a>
+    
+        <div class="timer text-purple-700 font-bold ">Time:
+            <span class="count "> </span>
+        </div>
+    </div>
+    <div class="mt-20">
+    <h1 class="js-title text-center font-serif">Javascript Quiz Challenge</h1>
     <div class="Quiz-body ">
         <div class="answers ">
-            <p>Press the button below to start the game. Incorrect answers incur a time penalty!</p>
-            <button class="start-button ">Start Quiz</button>
+            <p class="font-serif">Press the button below to start the game. Incorrect answers incur a time penalty!</p>
+          <button class="start-button bg-purple-900 text-white font-bold mt-10 rounded p-2">Start Quiz</button>
         </div>
         <div class="submit ">
             <p id="feedback">
             </p>
         </div>
     </div>
+</div>
+</div>
     <script src="./questions.js "></script>
     <script src="./script.js "></script>
 </body>

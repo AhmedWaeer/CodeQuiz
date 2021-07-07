@@ -26,12 +26,7 @@
         margin-top: 20px;
     }
     
-    .start-button {
-        margin-top: 20px;
-        background-color: rgb(49, 10, 85);
-        color: cornsilk;
-        font-weight: bold;
-    }
+
     
     li {
         list-style: none;
@@ -85,7 +80,6 @@
     .timer {
         font-family: ui-monospace;
         font-weight: 600;
-        color: rgb(49, 10, 85);
     }
     
     .score-body {
