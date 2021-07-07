@@ -9,13 +9,13 @@ let Questions = [{
     },
 
     {
-        question: "What is the HTML tag under which one can write the JavaScript code?",
-        choices: ["A. <javascript> ... </javascript>",
-            "B. <scripted> ... </scripted>",
-            "C. <script>...  </script>",
-            "D. <js> ... </js>"
+        question: "Which one of the following also known as Conditional Expression:",
+        choices: ["A. Alternative to if-else",
+            "B. Switch statement",
+            "C. If-then-else statement",
+            "D. immediate if"
         ],
-        answer: "C. <script>...  </script>"
+        answer: "D. immediate if"
     }
 
     ,
@@ -28,6 +28,7 @@ let Questions = [{
             "All the Above"
         ],
         answer: "All the Above"
+
     }
 
     ,
